@@ -37,7 +37,7 @@ export function removeDuplicatesSpaceOptimized(linkedList: SingleLinkedList<Numb
     while (p != null && q != null) {
         let isSeenBefore = false;
         let r = linkedList.head;
-        while (r != null) {
+        while (r != null && r != q) {
             if (r.value == q.value) {
                 isSeenBefore = true;
                 break;
