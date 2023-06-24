@@ -15,4 +15,15 @@ test.each(tests)("should remove duplicates", ({ input, expectedOutput }) => {
     const output = new Array<Number>();
     inputList.forEach((node) => output.push(node.value));
     expect(output).toStrictEqual(expectedOutput);
-});;
+});
+
+
+test.each(tests)("should remove duplicates - space optimized", ({ input, expectedOutput }) => {
+    const inputList = new SingleLinkedList<Number>();
+    input.forEach(num => inputList.append(new ListNode(num)));
+    removeDuplicates(inputList);
+    const output = new Array<Number>();
+    inputList.forEach((node) => output.push(node.value));
+    expect(output).toStrictEqual(expectedOutput);
+});
+
