@@ -1,5 +1,5 @@
 import { removeDuplicates, removeDuplicatesSpaceOptimized } from "./removeDuplicates";
-import { ListNode, SingleLinkedList } from "../SingleLinkedList"
+import { SingleLinkedList } from "../../libs/SingleLinkedList"
 
 const tests = [
     { input: [1, 5, 2, 5, 9, 0, 2, 6, 4, 6], expectedOutput: [1, 5, 2, 9, 0, 6, 4] },
@@ -9,21 +9,17 @@ const tests = [
 ]
 
 test.each(tests)("should remove duplicates", ({ input, expectedOutput }) => {
-    const inputList = new SingleLinkedList<Number>();
-    input.forEach(num => inputList.append(new ListNode(num)));
+    const inputList = SingleLinkedList.fromArray(input);
     removeDuplicates(inputList);
-    const output = new Array<Number>();
-    inputList.forEach((node) => output.push(node.value));
+    const output = inputList.toArray();
     expect(output).toStrictEqual(expectedOutput);
 });
 
 
 test.each(tests)("should remove duplicates - space optimized", ({ input, expectedOutput }) => {
-    const inputList = new SingleLinkedList<Number>();
-    input.forEach(num => inputList.append(new ListNode(num)));
+    const inputList = SingleLinkedList.fromArray(input);
     removeDuplicatesSpaceOptimized(inputList);
-    const output = new Array<Number>();
-    inputList.forEach((node) => output.push(node.value));
+    const output = inputList.toArray();
     expect(output).toStrictEqual(expectedOutput);
 });
 

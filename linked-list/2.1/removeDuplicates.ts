@@ -1,4 +1,4 @@
-import { SingleLinkedList } from "../SingleLinkedList";
+import { SingleLinkedList } from "../../libs/SingleLinkedList";
 
 /**
  * Question: Remove duplicates from an unsorted linked list

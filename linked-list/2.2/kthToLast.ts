@@ -1,4 +1,4 @@
-import { ListNode, SingleLinkedList } from "../SingleLinkedList";
+import { ListNode, SingleLinkedList } from "../../libs/SingleLinkedList";
 
 /**
  * Question - Implement an algorithm to return the kth element from last from a linked list

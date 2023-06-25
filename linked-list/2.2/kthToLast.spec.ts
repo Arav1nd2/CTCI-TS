@@ -1,4 +1,4 @@
-import { ListNode, SingleLinkedList } from "../SingleLinkedList";
+import { SingleLinkedList } from "../../libs/SingleLinkedList";
 import { kthToLast, kthToLastRecursive } from "./kthToLast";
 
 const tests = [
@@ -9,16 +9,14 @@ const tests = [
 ]
 
 test.each(tests)('return kth element from last of a linkedlist', ({ input: { list, k }, expectedOutput }) => {
-    const inputList = new SingleLinkedList<Number>();
-    list.forEach(num => inputList.append(new ListNode(num)));
+    const inputList = SingleLinkedList.fromArray(list);
     const output = kthToLast(inputList, k);
     expect(output).not.toBeUndefined();
     expect(output?.value).toBe(expectedOutput);
 });
 
 test.each(tests)('return kth element from last of a linkedlist - recursive', ({ input: { list, k }, expectedOutput }) => {
-    const inputList = new SingleLinkedList<Number>();
-    list.forEach(num => inputList.append(new ListNode(num)));
+    const inputList = SingleLinkedList.fromArray(list);
     const output = kthToLastRecursive(inputList, k);
     expect(output).not.toBeUndefined();
     expect(output?.value).toBe(expectedOutput);

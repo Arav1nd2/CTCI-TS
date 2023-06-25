@@ -11,6 +11,16 @@ export class ListNode<T> {
 export class SingleLinkedList<T> {
     head: ListNode<T> | null;
 
+    static fromArray(arr: any[]): SingleLinkedList<any> {
+        if (arr.length <= 0) {
+            return new SingleLinkedList<any>();
+        }
+        type dataType = typeof arr[0];
+        const linkedList = new SingleLinkedList<dataType>();
+        arr.forEach(val => linkedList.append(new ListNode<dataType>(val)));
+        return linkedList;
+    }
+
     constructor() {
         this.head = null;
     }
@@ -35,6 +45,26 @@ export class SingleLinkedList<T> {
             counter++;
             pointer = pointer.next;
         }
+    }
+
+    getNode(index: number): (ListNode<T> | null) {
+        if (index == 0) return this.head;
+        let ptr = this.head;
+        while (index > 0 && ptr != null) {
+            ptr = ptr.next;
+            index--;
+        }
+        return ptr;
+    }
+
+    toArray(): T[] {
+        let ptr = this.head;
+        const ans: T[] = [];
+        while (ptr != null) {
+            ans.push(ptr.value);
+            ptr = ptr.next;
+        }
+        return ans;
     }
 }
 
