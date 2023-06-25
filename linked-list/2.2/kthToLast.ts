@@ -20,3 +20,24 @@ export function kthToLast(linkedList: SingleLinkedList<Number>, k: number): (Lis
     }
     return pointerB;
 }
+
+/**
+ * Question - Implement an algorithm to return the kth element from last from a linked list
+ * Space Complexity - O(1)
+ * Time Complexity - O(n) where n is number of elements of the list
+ * @param linkedList SingleLinkedList<Number>
+ */
+export function kthToLastRecursive(linkedList: SingleLinkedList<Number>, k: number): (ListNode<Number> | null) {
+    const ctx = { c: k, ans: null };
+    traverse(linkedList.head, ctx);
+    return ctx.ans;
+}
+
+function traverse(node: (ListNode<Number> | null), ctx: { c: number, ans: (ListNode<Number> | null) }): void {
+    if (node == null) return;
+    traverse(node.next, ctx);
+    if (ctx.c === 0) {
+        ctx.ans = node;
+    }
+    ctx.c = ctx.c - 1;
+}
