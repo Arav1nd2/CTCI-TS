@@ -10,6 +10,7 @@ export class ListNode<T> {
 
 export class SingleLinkedList<T> {
     head: ListNode<T> | null;
+    tail: ListNode<T> | null;
 
     static fromArray(arr: any[]): SingleLinkedList<any> {
         if (arr.length <= 0) {
@@ -23,18 +24,19 @@ export class SingleLinkedList<T> {
 
     constructor() {
         this.head = null;
+        this.tail = null;
     }
 
     append(node: ListNode<T>) {
         if (this.head == null) {
             this.head = node;
+            this.tail = node;
             return;
         }
-        let tail = this.head;
-        while (tail != null && tail.next != null) {
-            tail = tail.next;
+        if (this.tail != null) {
+            this.tail.next = node;
+            this.tail = node;
         }
-        tail.next = node;
     }
 
     forEach(cb: (node: ListNode<T>, index: Number) => void) {
